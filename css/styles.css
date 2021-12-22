@@ -1,0 +1,125 @@
+body {
+	padding: 0;
+	margin: 0;
+	background: #00AAFF;
+	font-family: Gotham Rounded, sans-serif;
+}
+
+#main {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	text-align: center;
+    color: black;
+}
+
+.title {
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.intro {
+	font-size: 1.5em;
+	font-weight: 100;
+}
+
+.appButtons button {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #151f74;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 28px;
+	padding: 20px;
+	width: 200px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.appButtons span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+  
+.appButtons span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+  
+.appButtons:hover span {
+	padding-right: 25px;
+}
+  
+.appButtons:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+
+.calcGrid {
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	min-height: 50vh;
+	grid-template-columns: repeat(4, 100px);
+	grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+
+.calcGrid > button {
+	font-size: 2rem;
+	border: 1px solid white;
+	outline: none;
+	background-color: rgba(255, 255, 255, 0.75);
+}
+
+.calcGrid > button:hover {
+	cursor: pointer;
+	opacity: 0.9;
+}
+
+.calcGrid .twoSpaces {
+	grid-column: span 2;
+}
+
+.calcGrid .outputScreen {
+	grid-column: 1 / -1;
+	background-color: rgba(0, 0, 0, 0.75);
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-around;
+	flex-direction: column;
+	padding: 10px;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+.calcGrid .outputScreen .previousOperand {
+	color: gray;
+	font-size: 1.5rem;
+}
+
+.calcGrid .outputScreen .currentOperand {
+	color: white;
+	font-size: 2.5rem;
+}
+
+#footer {
+	text-align: center;
+	background-color: black;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100vw;
+}
+
+.socials i {
+	padding: 10px;
+    font-size: 2em;
+    color: white;
+}
