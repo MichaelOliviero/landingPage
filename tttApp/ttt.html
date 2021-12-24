@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+
+	<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="..\css\styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <section id="main">
+        <div class="title"><h1>Tic-Tac-Toe</h1></div>
+        <div class="tttScores">
+            <span>Games:
+                <label id="gameScore">0</label>
+            </span>
+            <span>X Wins:
+                <label id="xScore">0</label>
+            </span>
+            <span>O Wins:
+                <label id="oScore">0</label>
+            </span>
+        </div>
+        <div class="tttGrid">
+            <button tl>X</button>
+            <button tm>X</button>
+            <button tr> </button>
+            <button ml>O</button>
+            <button mm></button>
+            <button mr>X</button>
+            <button bl></button>
+            <button bm></button>
+            <button br>O</button>
+        </div>
+        <div class="tttOptions">
+            <span whosTurn>
+                <label>'s turn!</label>
+            </span>
+            <div class="tttColors">
+                <span>
+                    <label for="xColor">X:</label>
+                    <input type="color" id="xColor" value="#FF0000">
+                </span>
+                <span>
+                    <label for="oColor">O:</label>
+                    <input type="color" id="oColor" value="#0000FF">
+                </span>
+            </div>
+            <button newGame>New Game</button>
+        </div>
+    </section>
+    <section id="footer">
+        <div class="socials">
+            <a target="_blank" href="https://github.com/MichaelOliviero"><i class="fab fa-github"></i></a>
+            <a target="_blank" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a target="_blank" href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+			<a target="_blank" href="https://stackoverflow.com/story/"><i class="fab fa-stack-overflow"></i></a>
+			<a target="_blank" href="https://www.linkedin.com/in/"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </section>
+</body>
+</html>
