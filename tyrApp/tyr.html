@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Your Reflexes</title>
+
+	<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="..\css\styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <section id="main">
+        <div class="title"><h1>Test Your Reflexes</h1></div>
+        <div class="tyrScore">
+            <span>Best:
+                <label id="bestScore"></label>s
+            </span>
+            <span>Attempts:
+                <label id="tryScore"></label>
+            </span>
+        </div>
+        <div class="tyrArea">
+            <button waitButton style="visibility: hidden; background-color: DarkRed;">Waiting...</button>
+            <button goButton style="visibility: hidden; background-color: ForestGreen;">CLICK!</button>
+            <button resetButton style="visibility: visible; background-color: DarkOrange;">Score:
+                <div><span><label id="currentTime">0</label>s</span></div>
+                <div><span style="font-size: 0.5em;">(Click to play again)</span></div>
+            </button>
+        </div>
+    </section>
+    <section id="footer">
+        <div class="socials">
+            <a target="_blank" href="https://github.com/MichaelOliviero"><i class="fab fa-github"></i></a>
+            <a target="_blank" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a target="_blank" href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+			<a target="_blank" href="https://stackoverflow.com/story/"><i class="fab fa-stack-overflow"></i></a>
+			<a target="_blank" href="https://www.linkedin.com/in/"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </section>
+</body>
+</html>
