@@ -69,6 +69,10 @@ class testYourReflexes {
 
         // Clear any timeout/interval up to that id
         for (let i = 1; i < interval_id; i++) { window.clearInterval(i) }
+
+        // Show a fail message + reset previous time
+        alert("You failed! Try timing it better.")
+        currentTime.innerText = parseInt(0)
     }
 
     playGame() {
@@ -108,7 +112,7 @@ const resetButton = document.querySelector('[resetButton]')
 
 const currentTime = document.getElementById('currentTime')
 
-const game = new testYourReflexes(retrievedAttempts, retrievedBest)
+const game = new testYourReflexes()
 
 goButton.addEventListener('click', button => {
     // Win the game

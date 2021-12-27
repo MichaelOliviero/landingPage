@@ -1,18 +1,29 @@
 class tictactoe {
     constructor() {
+        // Set games/scores for new users
+        if (this.getGames() == null || isNaN(this.getGames())) { this.setGames(1) }
+        if (this.getXWins() == null || isNaN(this.getXWins()) ) { this.setXWins(0) }
+        if (this.getOWins() == null || isNaN(this.getOWins()) ) { this.setOWins(0) }
+
+        // Start new game
         this.newGame()
     }
 
     // Getters
+    getGames() { return localStorage.getItem('retrievedGames') }
+    getXWins() { return localStorage.getItem('retrievedXWins') }
+    getOWins() { return localStorage.getItem('retrievedOWins') }
     getXColor(x) { return x.value }
     getOColor(o) { return o.value }
     getSquareInfo(square) { return square.innerText }
     getTurnInfo() { return turn }
 
     // Setters
+    setGames(number) { localStorage.setItem('retrievedGames', parseInt(number)) }
+    setXWins(number) { localStorage.setItem('retrievedXWins', parseInt(number)) }
+    setOWins(number) { localStorage.setItem('retrievedOWins', parseInt(number)) }
     setColor(location, color) { location.style.color = color }
     setSquareInfo(square, value) { square.innerText = value }
-    setScore(score) { score.innerText = parseInt(score.innerText) + 1 }
     setTurnInfo() {
         if (turn == 0) {
             whosTurnText.innerText = "X's turn!"
@@ -27,7 +38,15 @@ class tictactoe {
     }
 
     newGame() {
-        this.setScore(gameScore)
+        // Update game/score displays
+        gameScore.innerText = this.getGames()
+        xScore.innerText = this.getXWins()
+        oScore.innerText = this.getOWins()
+
+        // Increment the game count
+        this.setGames(parseInt(this.getGames()) + 1)
+
+        // Reset all the game squares to empty
         this.setSquareInfo(topLeftButton, '')
         this.setSquareInfo(topMiddleButton, '')
         this.setSquareInfo(topRightButton, '')
@@ -40,6 +59,7 @@ class tictactoe {
         this.setSquareInfo(bottomMiddleButton, '')
         this.setSquareInfo(bottomRightButton, '')
 
+        // Randomly choose who starts
         this.setTurn(Math.random())
 
         if (turn < 0.5) {
@@ -47,13 +67,19 @@ class tictactoe {
         } else {
             this.setTurn(1)
         }
+
+        // Set the turn of the random person
         this.setTurnInfo(turn)
     }
 
     playTurn(square) {
+        // Disable the color palettes
         xColor.disabled = true
         oColor.disabled = true
 
+        // Determine whether the user can select the square
+        // And check if its a winning square
+        // Or warn that that square cannot be played
         if (square.innerText == '') {
             if (this.getTurnInfo() == 0) {
                 this.setSquareInfo(square, "X")
@@ -66,19 +92,22 @@ class tictactoe {
             }
             this.checkWin()
         } else {
-            console.log("CANT GO, ALREADY TAKEN!")
+            alert("You can't go there... That square is taken.")
         }
     }
 
     checkWin() {
+        // Check all the winning scenarios and grant the appriopriate point to winner
         if (this.getSquareInfo(topLeftButton) === this.getSquareInfo(topMiddleButton) &&
             this.getSquareInfo(topLeftButton) === this.getSquareInfo(topRightButton)) {
             if (this.getSquareInfo(topLeftButton) != '') {
                 if (this.getSquareInfo(topLeftButton) == 'X') {
-                    this.setScore(xScore)
+                    this.setXWins(parseInt(this.getXWins()) + 1)
+                    alert("X Won!")
                     game.newGame()
                 } else {
-                    this.setScore(oScore)
+                    this.setOWins(parseInt(this.getOWins()) + 1)
+                    alert("O Won!")
                     game.newGame()
                 }
             }
@@ -86,10 +115,12 @@ class tictactoe {
         this.getSquareInfo(middleLeftButton) === this.getSquareInfo(middleRightButton)) {
             if (this.getSquareInfo(middleLeftButton) != '') {
                 if (this.getSquareInfo(middleLeftButton) == 'X') {
-                    this.setScore(xScore)
+                    this.setXWins(parseInt(this.getXWins()) + 1)
+                    alert("X Won!")
                     game.newGame()
                 } else {
-                    this.setScore(oScore)
+                    this.setOWins(parseInt(this.getOWins()) + 1)
+                    alert("O Won!")
                     game.newGame()
                 }
             }
@@ -97,10 +128,12 @@ class tictactoe {
         this.getSquareInfo(bottomLeftButton) === this.getSquareInfo(bottomRightButton)) {
             if (this.getSquareInfo(bottomLeftButton) != '') {
                 if (this.getSquareInfo(bottomLeftButton) == 'X') {
-                    this.setScore(xScore)
+                    this.setXWins(parseInt(this.getXWins()) + 1)
+                    alert("X Won!")
                     game.newGame()
                 } else {
-                    this.setScore(oScore)
+                    this.setOWins(parseInt(this.getOWins()) + 1)
+                    alert("O Won!")
                     game.newGame()
                 }
             }
@@ -108,10 +141,12 @@ class tictactoe {
         this.getSquareInfo(topLeftButton) === this.getSquareInfo(bottomLeftButton)) {
             if (this.getSquareInfo(topLeftButton) != '') {
                 if (this.getSquareInfo(topLeftButton) == 'X') {
-                    this.setScore(xScore)
+                    this.setXWins(parseInt(this.getXWins()) + 1)
+                    alert("X Won!")
                     game.newGame()
                 } else {
-                    this.setScore(oScore)
+                    this.setOWins(parseInt(this.getOWins()) + 1)
+                    alert("O Won!")
                     game.newGame()
                 }
             }
@@ -119,10 +154,12 @@ class tictactoe {
         this.getSquareInfo(topMiddleButton) === this.getSquareInfo(bottomMiddleButton)) {
             if (this.getSquareInfo(topMiddleButton) != '') {
                 if (this.getSquareInfo(topMiddleButton) == 'X') {
-                    this.setScore(xScore)
+                    this.setXWins(parseInt(this.getXWins()) + 1)
+                    alert("X Won!")
                     game.newGame()
                 } else {
-                    this.setScore(oScore)
+                    this.setOWins(parseInt(this.getOWins()) + 1)
+                    alert("O Won!")
                     game.newGame()
                 }
             }
@@ -130,10 +167,12 @@ class tictactoe {
         this.getSquareInfo(topRightButton) === this.getSquareInfo(bottomRightButton)) {
             if (this.getSquareInfo(topRightButton) != '') {
                 if (this.getSquareInfo(topRightButton) == 'X') {
-                    this.setScore(xScore)
+                    this.setXWins(parseInt(this.getXWins()) + 1)
+                    alert("X Won!")
                     game.newGame()
                 } else {
-                    this.setScore(oScore)
+                    this.setOWins(parseInt(this.getOWins()) + 1)
+                    alert("O Won!")
                     game.newGame()
                 }
             }
@@ -141,10 +180,12 @@ class tictactoe {
         this.getSquareInfo(topLeftButton) === this.getSquareInfo(bottomRightButton)) {
             if (this.getSquareInfo(topLeftButton) != '') {
                 if (this.getSquareInfo(topLeftButton) == 'X') {
-                    this.setScore(xScore)
+                    this.setXWins(parseInt(this.getXWins()) + 1)
+                    alert("X Won!")
                     game.newGame()
                 } else {
-                    this.setScore(oScore)
+                    this.setOWins(parseInt(this.getOWins()) + 1)
+                    alert("O Won!")
                     game.newGame()
                 }
             }
@@ -152,10 +193,12 @@ class tictactoe {
         this.getSquareInfo(topRightButton) === this.getSquareInfo(bottomLeftButton)) {
             if (this.getSquareInfo(topRightButton) != '') {
                 if (this.getSquareInfo(topRightButton) == 'X') {
-                    this.setScore(xScore)
+                    this.setXWins(parseInt(this.getXWins()) + 1)
+                    alert("X Won!")
                     game.newGame()
                 } else {
-                    this.setScore(oScore)
+                    this.setOWins(parseInt(this.getOWins()) + 1)
+                    alert("O Won!")
                     game.newGame()
                 }
             }
@@ -180,6 +223,10 @@ const bottomRightButton = document.querySelector('[br]')
 const xColor = document.getElementById('xColor')
 const oColor = document.getElementById('oColor')
 
+
+var retrievedGames = localStorage.getItem('tttGames')
+var retrievedXWins = localStorage.getItem('tttXWins')
+var retrievedOWins = localStorage.getItem('tttOWins')
 const gameScore = document.getElementById('gameScore')
 const xScore = document.getElementById('xScore')
 const oScore = document.getElementById('oScore')
@@ -188,14 +235,16 @@ const whosTurnText = document.querySelector('[whosTurn]')
 
 const newGameButton = document.querySelector('[newGame]')
 
-const game = new tictactoe(xColor, oColor)
+const game = new tictactoe()
 
 newGameButton.addEventListener('click', button => {
+    // Start a new game and re-enable the color palettes
     game.newGame()
     xColor.disabled = false
     oColor.disabled = false
 })
 
+// Event listeners for each of the playable squares
 topLeftButton.addEventListener('click', button => { game.playTurn(topLeftButton) })
 topMiddleButton.addEventListener('click', button => { game.playTurn(topMiddleButton) })
 topRightButton.addEventListener('click', button => { game.playTurn(topRightButton) })
